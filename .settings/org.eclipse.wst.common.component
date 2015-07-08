@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="CustomDeviceProvisioning">
+        <wb-resource deploy-path="/" source-path="/apps/CustomDeviceProvisioning/common"/>
+        <wb-resource deploy-path="/" source-path="/apps/CustomDeviceProvisioning/android"/>
+        <wb-resource deploy-path="/" source-path="/apps/CustomDeviceProvisioning/iphone"/>
+        <wb-resource deploy-path="/" source-path="/apps/test/common"/>
+        <wb-resource deploy-path="/" source-path="/apps/test/android"/>
+        <property name="context-root" value="CustomDeviceProvisioning"/>
+    </wb-module>
+</project-modules>
