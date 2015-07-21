@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <tns:loginConfiguration xmlns:tns="http://www.worklight.com/auth/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 <!--
@@ -59,7 +59,7 @@
        	</customSecurityTest>
        	-->
        	<customSecurityTest name="SubscribeServlet">
-       		<test realm="SubscribeServlet" isInternalUserID="true"/>
+       		<test isInternalUserID="true" realm="SubscribeServlet"/>
        	</customSecurityTest> 
        	
        	<mobileSecurityTest name="CustomDeviceProvisioningSecurityTest">
@@ -70,18 +70,17 @@
 	</securityTests> 
 	
 	<realms>
-	<realm name="SampleAppRealm" loginModule="StrongDummy">
+	<realm loginModule="StrongDummy" name="SampleAppRealm">
 			<className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
 		</realm>
 		
-		<realm name="SubscribeServlet" loginModule="rejectAll">
+		<realm loginModule="rejectAll" name="SubscribeServlet">
 			<className>com.worklight.core.auth.ext.HeaderAuthenticator</className>			
 		</realm>
 		
-		<realm name="CustomDeviceProvisioningRealm" loginModule="CustomDeviceProvisioningLoginModule">
+		<realm loginModule="CustomDeviceProvisioningLoginModule" name="CustomDeviceProvisioningRealm">
 			<className>com.worklight.core.auth.ext.DeviceAutoProvisioningAuthenticator</className>
-			<parameter 	name="validate-csr-function" 
-						value="ProvisioningAdapter.validateCSR"/>
+			<parameter name="validate-csr-function" value="ProvisioningAdapter.validateCSR"/>
 		</realm>
 		
 		<!-- For client logger -->
@@ -119,22 +118,21 @@
 	</realms>
 
 	<loginModules>
-		<loginModule name="StrongDummy">
+		<loginModule expirationInSeconds="-1" name="StrongDummy">
 			<className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
 		</loginModule>
 		
-		<loginModule name="requireLogin">
+		<loginModule expirationInSeconds="-1" name="requireLogin">
 			<className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className>
 		</loginModule>
 		
-		<loginModule name="rejectAll">
+		<loginModule expirationInSeconds="-1" name="rejectAll">
 			<className>com.worklight.core.auth.ext.RejectingLoginModule</className>
 		</loginModule>
 		
-		<loginModule name="CustomDeviceProvisioningLoginModule">
+		<loginModule expirationInSeconds="-1" name="CustomDeviceProvisioningLoginModule">
 			<className>com.worklight.core.auth.ext.DeviceAutoProvisioningLoginModule</className>
-			<parameter 	name="validate-certificate-function" 
-						value="ProvisioningAdapter.validateCertificate"/>
+			<parameter name="validate-certificate-function" value="ProvisioningAdapter.validateCertificate"/>
 		</loginModule>
 		
 		<!-- Required for Trusteer - wl_basicTrusteerFraudDetectionRealm -->		
